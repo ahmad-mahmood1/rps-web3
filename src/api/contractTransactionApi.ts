@@ -12,6 +12,7 @@ const useLatestTransaction = (gameAddress: Address | undefined) => {
       return data;
     },
     enabled: !!gameAddress,
+    refetchInterval: 1000,
   });
 };
 

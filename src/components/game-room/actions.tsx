@@ -21,7 +21,7 @@ export const Actions = ({ gameAddress, gameRoomData }: { gameAddress: Address; g
   const { isLoading: isLoadingRPSContractData } = useReadRPSContractState(gameAddress);
   const { timer } = useTimeElapsedLastAction(gameAddress);
 
-  const { gameStatus } = useGameStatus(gameAddress);
+  const { gameStatus, isLoadingGameStatus } = useGameStatus(gameAddress);
   const { salt, move: p1MoveKey } = useGameStore();
 
   const { data: gameResult } = useWin({
@@ -78,7 +78,7 @@ export const Actions = ({ gameAddress, gameRoomData }: { gameAddress: Address; g
 
   // Since a single button is shown in any case we can consolidate the loading states
   const showActionLoading = isFetchingP1Timeout || isFetchingP2Timeout || isFetchingSolveGame;
-  const isLoadingUI = isLoadingRPSContractData;
+  const isLoadingUI = isLoadingRPSContractData || isLoadingGameStatus;
 
   useBlockNavigation(showActionLoading || isLoadingRPSContractData);
 

@@ -35,6 +35,7 @@ export const useReadRPSContractState = (contractAddress: Address | undefined) =>
 
         return contractState;
       },
+      refetchInterval: 1000,
     },
   });
 
